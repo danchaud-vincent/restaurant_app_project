@@ -23,15 +23,59 @@
             </div>
         </header>
         <main>
-            <section>
-                <div class="menu-container">
-                    <img src="images/pizza.png" alt="pizza" class="food-img">
-                    <div class="food-details">
-                        <h3>Pizza</h3>
-                        <p>pepperoni,mushrom,mozarella</p>
-                        <p>$14</p>
+            <section class="menu-section">
+                <div class="food-container">
+                    <div class="food-description">
+                        <img src="images/pizza.png" alt="pizza" class="food-img">
+                        <div class="food-details">
+                            <h3>Pizza</h3>
+                            <p class="food-ingredients">pepperoni,mushrom,mozarella</p>
+                            <p class="food-price">$14</p>
+                        </div>
                     </div>
-                    <button><i class="fa-solid fa-plus"></i></button>
+                    <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </section>
+
+            <section class="order-section">
+                <div class="order-container">
+                    <h2 class="order-title">Your order</h2>
+                    <div class="order-items">
+                        <div class="order-item">
+                            <h3>Pizza</h3>
+                            <div>
+                                <button><i class="fa-solid fa-minus"></i></button>
+                                <span class="number-item">0</span>
+                                <button><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <p class="food-price">$14</p>
+                        </div>
+                        <div class="order-item">
+                            <h3>Pizza</h3>
+                            <div>
+                                <button><i class="fa-solid fa-minus"></i></button>
+                                <span class="number-item">0</span>
+                                <button><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <p class="food-price">$14</p>
+                        </div>
+                    </div>
+                    <div class="order-price">
+                        <h3>Total price:</h3>
+                        <p class="food-price">$14</p>
+                    </div>
+
+                    <button class="complete-btn">Complete order</button>
+                </div>
+
+                
+
+
+            </section>
+
+            <section class="modal-section">
+                <div class="modal-container">
+
                 </div>
             </section>
 

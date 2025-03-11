@@ -5,7 +5,7 @@ body{
 }
 
 /* LAYOUT */
-.header-container, .menu-container{
+header, main{
     width: 50%;
     min-width: 370px;
     margin: 0 auto;
@@ -20,16 +20,68 @@ body{
     position: absolute;
     top: 60px;
     left: 45px;
+    text-shadow: 1px 1px 1px black;
 
     color: whitesmoke;
 }
 
-.menu-container{
+.menu-section, .order-section{
+    margin-top: 40px;
+}
+
+.order-section{
+    margin-bottom: 40px;
+}
+
+.food-container, .order-container, .modal-container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.food-container{
+    margin: 0 auto;
+    padding-bottom: 20px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+
+.food-description{
+    display: flex;
+    gap: 30px;
+}
+
+.order-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.order-items{
+    margin-top: 60px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid black;
+}
+
+.order-item{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.order-item p{
+    margin-left: auto;
+}
+
+.order-price{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* TYPOGRAPHY */
-h1, h2, h3{
+h1, h2, h3, p{
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -45,9 +97,51 @@ h2{
     font-weight: 200;
 }
 
+h3{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.food-ingredients{
+    color: #8B8B8B;
+    margin: 10px 0;
+}
+
+.food-price{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.order-title{
+    text-align: center;
+}
+
 /* IMAGES & ICONS */
 .header-img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+
+/* BUTTONS */
+button{
+    cursor: pointer;
+}
+
+.add-btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.complete-btn{
+    margin-top: 50px;
+    padding: 20px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #16DB99;
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 20px;
 }
