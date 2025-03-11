@@ -1,20 +1,23 @@
-const menu = [
+export const menu = [
     {
         title: "Pizza",
-        details: "pepperoni,mushrom,mozarella",
+        ingredients: "pepperoni,mushrom,mozarella",
         image: "images/pizza.png",
+        alt: "pizza emoji",
         price: 14
     },
     {
         title: "Hamburger",
-        details: "beef, cheese, lettuce",
+        ingredients: "beef, cheese, lettuce",
         image: "images/burger.png",
+        alt: "burger emoji",
         price: 12
     },
     {
         title: "Beer",
-        details: "grain, hops, yeast, water",
+        ingredients: "grain, hops, yeast, water",
         image: "images/beer.png",
+        alt: "beer emoji",
         price: 8
     }
 ]

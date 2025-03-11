@@ -26,35 +26,28 @@ header, main{
 }
 
 .menu-section, .order-section{
-    margin-top: 40px;
-}
-
-.order-section{
-    margin-bottom: 40px;
-}
-
-.food-container, .order-container, .modal-container{
+    margin: 0 auto;
     width: 90%;
-    margin: 0 auto;
 }
 
-.food-container{
-    margin: 0 auto;
-    padding-bottom: 20px;
+.menu-food-container{
+    padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid lightgray;
 }
 
-.food-description{
+.menu-food-description{
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
-.order-container{
+.order-section{
     display: flex;
     flex-direction: column;
+    padding-top: 40px;
 }
 
 .order-items{
@@ -64,7 +57,7 @@ header, main{
 }
 
 .order-item{
-    margin-top: 10px;
+    margin-top: 5px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -72,6 +65,12 @@ header, main{
 
 .order-item p{
     margin-left: auto;
+}
+
+.order-item-number{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .order-price{
@@ -102,12 +101,12 @@ h3{
     font-weight: 500;
 }
 
-.food-ingredients{
+.menu-food-ingredients{
     color: #8B8B8B;
     margin: 10px 0;
 }
 
-.food-price{
+.price{
     font-weight: 500;
     font-size: 20px;
 }
@@ -123,6 +122,10 @@ h3{
     object-fit: cover;
 }
 
+.food-img{
+    width: 60px;
+    height: 60px;
+}
 
 /* BUTTONS */
 button{
@@ -144,4 +147,9 @@ button{
     color: whitesmoke;
     font-weight: 600;
     font-size: 20px;
+}
+
+/* DISPLAY */
+.hidden{
+    display: none;
 }
