@@ -33,16 +33,27 @@
                 
                 <div class="order-price">
                     <h3>Total price:</h3>
-                    <p class="food-price">$14</p>
+                    <p class="food-price" id="total-price"></p>
                 </div>
 
-                <button class="complete-btn">Complete order</button>
+                <button class="complete-btn" id="complete-btn">Complete order</button>
             </section>
 
-            <section class="modal-section">
-                <div class="modal-container">
+            <section class="modal-section" id="modal">
+                <form id="payment-form">
+                    <h1 class="form-title">Enter card details</h1>
 
-                </div>
+                    <label for="fname">Name</label>
+                    <input id="fname" type="text" placeholder="Ben Stiller" required>
+                    
+                    <label for="fcard">Card number</label>
+                    <input id="fcard" type="text" placeholder="1234 5678 9123 4567" pattern="\d{4} \d{4} \d{4} \d{4}" required>
+                    
+                    <label for="fcvv">CVV</label>
+                    <input id="fcvv" type="number" placeholder="635" min="100" max="999" required>
+
+                    <button type="submit" class="pay-btn">pay</button>
+                </form>
             </section>
 
         </main>

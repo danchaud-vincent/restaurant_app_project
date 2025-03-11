@@ -2,6 +2,9 @@ import {menu} from "/data.js"
 import { v4 as uuidv4 } from 'https://cdn.jsdelivr.net/npm/uuid@latest/+esm';
 
 const menuSectionEl = document.getElementById('menu-section-el')
+const completeBtn = document.getElementById('complete-btn')
+const paymentForm = document.getElementById('payment-form')
+
 const data_order = []
 
 // generateID for each food
@@ -45,6 +48,32 @@ document.addEventListener('click', function(e){
     }
 })
 
+completeBtn.addEventListener('click', function(){
+    document.getElementById('modal').style.display = "flex"
+})
+
+paymentForm.addEventListener('submit',function(e){
+    e.preventDefault()
+
+    document.getElementById('modal').style.display = "none"
+
+    // reset form
+    paymentForm.reset()
+})
+
+window.addEventListener('click', function(e){
+
+    if (document.getElementById('modal').style.display === 'flex' && !e.target.matches(".complete-btn")){
+        
+        if(!event.target.closest(".modal-section")){
+            
+            document.getElementById('modal').style.display = "none"
+            // reset form
+            paymentForm.reset()
+        }
+    }
+})
+
 // ------------ FUNCTIONS ------------
 function generateID(data){
     
@@ -83,16 +112,20 @@ function addItem(id){
     const isSelected = data_order.filter(item => item.id ===id)
 
     if (isSelected.length){
-        // update the item to the order 
+        // get the item to the order 
         const itemOrder = isSelected[0]
+
+        // update the data
         itemOrder.nb_item_selected++
+        itemOrder.total_price = itemOrder.unique_price * itemOrder.nb_item_selected
     }
     else{
         // add the item to the order 
         data_order.push({
             id: item.id,
             title: item.title,
-            price: item.price,
+            unique_price: item.price,
+            total_price: item.price,
             nb_item_selected: 1,
         })
     } 
@@ -110,6 +143,7 @@ function removeItem(id){
     if (isSelected.nb_item_selected>1){
         // update the item to the order 
         isSelected.nb_item_selected--
+        isSelected.total_price = isSelected.unique_price * isSelected.nb_item_selected
     }
     else if(isSelected.nb_item_selected===1){
         // remove the item from the order 
@@ -120,6 +154,7 @@ function removeItem(id){
 
 function renderOrder(){
         
+        // ORDER DOM
         const orderDOM = data_order.map(item =>{
 
             let classIcon = ''
@@ -138,7 +173,7 @@ function renderOrder(){
                                     <span class="number-item" >${item.nb_item_selected}</span>
                                     <button data-plus=${item.id}><i class="fa-solid fa-plus" data-plus=${item.id}></i></button>
                                 </div>
-                                <p class="food-price">$${item.price}</p>
+                                <p class="food-price">$${item.total_price}</p>
                             </div>
                             `
             
@@ -146,5 +181,9 @@ function renderOrder(){
         })
 
         document.getElementById('order-items-el').innerHTML = orderDOM.join('')
+
+        // TOTAL PRICE DOM
+        const total = data_order.reduce((accumulator, currentValue) => accumulator + currentValue.total_price, 0)
+        document.getElementById('total-price').innerHTML = `$${total}`
         
 }
