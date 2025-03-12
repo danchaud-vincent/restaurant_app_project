@@ -1,4 +1,4 @@
-import {menu} from "/data.js"
+import {menu} from "./data.js"
 import { v4 as uuidv4 } from 'https://cdn.jsdelivr.net/npm/uuid@latest/+esm';
 
 const menuSectionEl = document.getElementById('menu-section-el')
@@ -24,10 +24,6 @@ document.addEventListener('click', function(e){
         // render the order
         renderOrder()
 
-        if (document.getElementById('order-section-el').classList.contains('hidden')){
-            // show the Order
-            document.getElementById('order-section-el').classList.toggle('hidden')
-        }
     }
     else if (e.target.dataset.minus){
 
@@ -169,41 +165,53 @@ function removeItem(id){
 
 function renderOrder(){
 
-        if (!document.getElementById('message-section-el').classList.contains('hidden')){
-            document.getElementById('message-section-el').classList.toggle('hidden')
+    // -------- ORDER DOM ------------------
+    const orderDOM = data_order.map(item =>{
+
+        let classIcon = ''
+        
+        if (item.nb_item_selected >1){
+            classIcon = 'fa-minus'
+        }
+        else{
+            classIcon = 'fa-trash'
         }
 
-        
-        // ORDER DOM
-        const orderDOM = data_order.map(item =>{
-
-            let classIcon = ''
-            
-            if (item.nb_item_selected >1){
-                classIcon = 'fa-minus'
-            }
-            else{
-                classIcon = 'fa-trash'
-            }
-
-            const itemDOM = `<div class="order-item">
-                                <h3>${item.title}</h3>
-                                <div class="order-item-number">
-                                    <button data-minus=${item.id}><i id="minus-${item.id}" class="fa-solid ${classIcon}" data-minus=${item.id}></i></button>
-                                    <span class="number-item" >${item.nb_item_selected}</span>
-                                    <button data-plus=${item.id}><i class="fa-solid fa-plus" data-plus=${item.id}></i></button>
-                                </div>
-                                <p class="food-price">$${item.total_price}</p>
+        const itemDOM = `<div class="order-item">
+                            <h3>${item.title}</h3>
+                            <div class="order-item-number">
+                                <button data-minus=${item.id}><i id="minus-${item.id}" class="fa-solid ${classIcon}" data-minus=${item.id}></i></button>
+                                <span class="number-item" >${item.nb_item_selected}</span>
+                                <button data-plus=${item.id}><i class="fa-solid fa-plus" data-plus=${item.id}></i></button>
                             </div>
-                            `
-            
-            return itemDOM
-        })
+                            <p class="food-price">$${item.total_price}</p>
+                        </div>
+                        `
+        
+        return itemDOM
+    })
 
-        document.getElementById('order-items-el').innerHTML = orderDOM.join('')
+    document.getElementById('order-items-el').innerHTML = orderDOM.join('')
 
-        // TOTAL PRICE DOM
-        const total = data_order.reduce((accumulator, currentValue) => accumulator + currentValue.total_price, 0)
-        document.getElementById('total-price').innerHTML = `$${total}`
+    // TOTAL PRICE DOM
+    const total = data_order.reduce((accumulator, currentValue) => accumulator + currentValue.total_price, 0)
+    document.getElementById('total-price').innerHTML = `$${total}`
+
+
+    // -------- CLASS HIDE/DISPLAY ------------------
+    // show client message when needed
+    if (!document.getElementById('message-section-el').classList.contains('hidden')){
+        document.getElementById('message-section-el').classList.toggle('hidden')
+    }
+
+    // show the Order section when needed
+    if (document.getElementById('order-section-el').classList.contains('hidden')){
+        document.getElementById('order-section-el').classList.toggle('hidden')
+    }
+
+    // hide the Order section if no DOM
+    if (!orderDOM.length && !document.getElementById('order-section-el').classList.contains('hidden')){
+        document.getElementById('order-section-el').classList.toggle('hidden')
+    }
         
 }
