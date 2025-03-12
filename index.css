@@ -27,7 +27,7 @@ header, main{
     color: whitesmoke;
 }
 
-.menu-section, .order-section{
+.menu-section, .order-section, .message-section{
     margin: 0 auto;
     width: 90%;
 }
@@ -101,7 +101,15 @@ header, main{
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0px 0px 100px 20px black;
     border-radius: 5px;
+}
 
+.message-section{
+    margin: 50px auto;
+    padding: 30px 0;
+    background-color: #ECFDF5;
+    color: #065F46;
+    border-radius: 5px;
+    text-align: center;
 }
 
 /* FORM */

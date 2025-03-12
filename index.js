@@ -5,7 +5,7 @@ const menuSectionEl = document.getElementById('menu-section-el')
 const completeBtn = document.getElementById('complete-btn')
 const paymentForm = document.getElementById('payment-form')
 
-const data_order = []
+let data_order = []
 
 // generateID for each food
 const data_menu = generateID(menu)
@@ -53,12 +53,27 @@ completeBtn.addEventListener('click', function(){
 })
 
 paymentForm.addEventListener('submit',function(e){
+
     e.preventDefault()
 
+    // hide the modal
     document.getElementById('modal').style.display = "none"
+
+    // hide the Order
+    document.getElementById('order-section-el').classList.toggle('hidden')
+
+    // add message
+    const name_customer = document.getElementById('fname').value
+    document.getElementById('message-client').textContent = `Thanks, ${name_customer}! Your order is on it's way!`
+
+    // show the answer
+    document.getElementById('message-section-el').classList.toggle('hidden')
 
     // reset form
     paymentForm.reset()
+
+    // reset order
+    data_order = []
 })
 
 window.addEventListener('click', function(e){
@@ -153,6 +168,11 @@ function removeItem(id){
 }
 
 function renderOrder(){
+
+        if (!document.getElementById('message-section-el').classList.contains('hidden')){
+            document.getElementById('message-section-el').classList.toggle('hidden')
+        }
+
         
         // ORDER DOM
         const orderDOM = data_order.map(item =>{
